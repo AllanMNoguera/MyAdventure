@@ -5,5 +5,10 @@
             app:startDestination="@+id/menuFragment">
 
     <fragment android:id="@+id/menuFragment" android:name="com.example.myadventure.MenuFragment"
-              android:label="fragment_menu" tools:layout="@layout/fragment_menu"/>
+              android:label="fragment_menu" tools:layout="@layout/fragment_menu">
+        <action android:id="@+id/action_menuFragment_to_gameSpaceFragment" app:destination="@id/gameSpaceFragment"
+                app:popUpTo="@+id/menuFragment" app:popUpToInclusive="false"/>
+    </fragment>
+    <fragment android:id="@+id/gameSpaceFragment" android:name="com.example.myadventure.game_space.GameSpaceFragment"
+              android:label="game_space_fragment" tools:layout="@layout/game_space_fragment"/>
 </navigation>
