@@ -33,9 +33,6 @@ class GameSpaceViewModel(
             }
         }
 
-        /**
-         * Executes when the STOP button is clicked.
-         */
         fun onEndGame() {
             uiScope.launch {
                 // In Kotlin, the return@label syntax is used for specifying which function among
