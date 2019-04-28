@@ -10,5 +10,14 @@
                 app:popUpTo="@+id/menuFragment" app:popUpToInclusive="false"/>
     </fragment>
     <fragment android:id="@+id/gameSpaceFragment" android:name="com.example.myadventure.game_space.GameSpaceFragment"
-              android:label="game_space_fragment" tools:layout="@layout/game_space_fragment"/>
+              android:label="game_space_fragment" tools:layout="@layout/game_space_fragment">
+        <action android:id="@+id/action_gameSpaceFragment_to_gameSpaceWonFragment"
+                app:destination="@id/gameSpaceWonFragment" app:popUpTo="@+id/gameSpaceFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment android:id="@+id/gameSpaceWonFragment"
+              android:name="com.example.myadventure.game_space.GameSpaceWonFragment"
+              android:label="game_space_won_fragment" tools:layout="@layout/game_space_won_fragment">
+        <argument android:name="gameId" app:argType="long"/>
+    </fragment>
 </navigation>

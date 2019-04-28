@@ -23,11 +23,15 @@ class GameSpaceFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = GameSpaceViewModelFactory(application)
+        val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
+
+        val viewModelFactory = GameSpaceViewModelFactory(dataSource, application)
 
         val gameSpaceViewModel =
             ViewModelProviders.of(
                 this, viewModelFactory).get(GameSpaceViewModel::class.java)
+
+        binding.gameSpaceViewModel = gameSpaceViewModel
 
         binding.setLifecycleOwner(this)
 
@@ -41,7 +45,11 @@ class GameSpaceFragment : Fragment() {
                 // popping the stack to get the correct behavior if we press stop multiple times
                 // followed by back.
                 // Also: https://stackoverflow.com/questions/28929637/difference-and-uses-of-oncreate-oncreateview-and-onactivitycreated-in-fra
-                ////////this.findNavController().navigate()
+                System.out.println(game.gameName)
+                this.findNavController().navigate(
+                    GameSpaceFragmentDirections
+                        .actionGameSpaceFragmentToGameSpaceWonFragment(game.gameId)
+                )
                 // Reset state to make sure we only navigate once, even if the device
                 // has a configuration change.
                 gameSpaceViewModel.doneNavigating()

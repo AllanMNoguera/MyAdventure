@@ -2,10 +2,12 @@ package com.example.myadventure.game_space
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.android.trackmysleepquality.database.Game
+import com.example.myadventure.database.GameDatabaseDao
+import com.example.myadventure.database.Game
 import kotlinx.coroutines.*
 
 class GameSpaceViewModel(
+        val database: GameDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 
         private var viewModelJob = Job()
@@ -33,6 +35,19 @@ class GameSpaceViewModel(
             }
         }
 
+        private suspend fun insert(game: Game) {
+            withContext(Dispatchers.IO) {
+                database.insert(game)
+            }
+        }
+
+        private suspend fun getThisGameFromDatabase(): Game? {
+            return withContext(Dispatchers.IO) {
+                var night = database.getThisGame()
+                night
+            }
+        }
+
         fun onEndGame() {
             uiScope.launch {
                 // In Kotlin, the return@label syntax is used for specifying which function among
@@ -41,10 +56,15 @@ class GameSpaceViewModel(
                 // not the lambda.
                 val endGame = thisgame.value ?: return@launch
 
-                // Update the night in the database to add the end time.
                 endGame.endTimeMilli = System.currentTimeMillis()
 
-                _navigateToGameOneScore.value = endGame
+                insert(endGame)
+
+                thisgame.value = getThisGameFromDatabase()
+
+                System.out.println(thisgame.value?.gameId)
+
+                _navigateToGameOneScore.value = thisgame.value
             }
         }
 

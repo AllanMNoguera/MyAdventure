@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.myadventure.databinding.FragmentMenuBinding
-import androidx.navigation.ui.NavigationUI
 
 class MenuFragment : Fragment() {
     override fun onCreateView(

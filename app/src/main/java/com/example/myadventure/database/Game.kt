@@ -1,10 +1,10 @@
-package com.example.android.trackmysleepquality.database
+package com.example.myadventure.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "game_performace_table")
+@Entity(tableName = "game_performance_table")
 data class Game(
     @PrimaryKey(autoGenerate = true)
     var gameId: Long = 0L,
