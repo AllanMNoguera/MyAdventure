@@ -4,6 +4,9 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.myadventure.database.GameDatabaseDao
 import com.example.myadventure.database.Game
+import com.example.myadventure.getSpaceAnswers
+import com.example.myadventure.getSpaceQuestion
+import com.example.myadventure.getSpaceScore
 import kotlinx.coroutines.*
 
 class GameSpaceViewModel(
@@ -16,6 +19,18 @@ class GameSpaceViewModel(
 
         private var thisgame = MutableLiveData<Game?>()
 
+        private var question = MutableLiveData<String?>()
+
+        private var answers = MutableLiveData<List<String>>()
+
+        val questionString: LiveData<String> = Transformations.map(question) { question ->
+            question
+        }
+
+        val answerString: LiveData<List<String>> = Transformations.map(answers) { answers ->
+            answers
+        }
+
         private val _navigateToGameOneScore = MutableLiveData<Game>()
 
         val navigateToGameScore: LiveData<Game>
@@ -27,25 +42,32 @@ class GameSpaceViewModel(
 
         init {
             initializeGame()
+            setQuestionAnswers()
+        }
+
+        private fun setQuestionAnswers() {
+            question.value = getSpaceQuestion()
+            answers.value = getSpaceAnswers()
         }
 
         private fun initializeGame() {
             uiScope.launch {
-                thisgame.value = Game(gameName = "space_game")
+                thisgame.value = Game(gameName = "space_game", gameScore = 0)
             }
         }
 
-        private suspend fun insert(game: Game) {
-            withContext(Dispatchers.IO) {
-                database.insert(game)
-            }
-        }
-
-        private suspend fun getThisGameFromDatabase(): Game? {
+        private suspend fun insert(game: Game): Long {
             return withContext(Dispatchers.IO) {
-                var night = database.getThisGame()
-                night
+                var scoreId = database.insert(game)
+                scoreId
             }
+        }
+
+        fun answerQuestion(answer: Int) {
+            val score = getSpaceScore(question.value, answers.value?.get(answer))
+            thisgame.value?.gameScore = thisgame.value?.gameScore!!.plus(score)
+            System.out.println(thisgame.value?.gameScore.toString())
+            setQuestionAnswers()
         }
 
         fun onEndGame() {
@@ -58,13 +80,9 @@ class GameSpaceViewModel(
 
                 endGame.endTimeMilli = System.currentTimeMillis()
 
-                insert(endGame)
+                endGame.gameId = insert(endGame)
 
-                thisgame.value = getThisGameFromDatabase()
-
-                System.out.println(thisgame.value?.gameId)
-
-                _navigateToGameOneScore.value = thisgame.value
+                _navigateToGameOneScore.value = endGame
             }
         }
 

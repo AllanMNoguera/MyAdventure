@@ -35,6 +35,8 @@ class GameSpaceWonFragment : Fragment() {
 
         binding.gameSpaceWonViewModel = gameSpaceWonViewModel
 
+        binding.setLifecycleOwner(this)
+
         // Add an Observer on the state variable for Navigating when STOP button is pressed.
 //        gameSpaceWonViewModel.navigateToGameMenu.observe(this, Observer { game ->
 //            game?.let {
