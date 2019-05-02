@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myadventure.database.GameDatabaseDao
 
-class GameSpaceViewModelFactory(
+class GameDetectiveViewModelFactory(
     private val dataSource: GameDatabaseDao,
     private val application: Application) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(GameSpaceViewModel::class.java)) {
-            return GameSpaceViewModel(dataSource, application) as T
+        if (modelClass.isAssignableFrom(GameDetectiveViewModel::class.java)) {
+            return GameDetectiveViewModel(dataSource, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

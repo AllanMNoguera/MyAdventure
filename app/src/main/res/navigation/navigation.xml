@@ -8,6 +8,8 @@
               android:label="fragment_menu" tools:layout="@layout/fragment_menu">
         <action android:id="@+id/action_menuFragment_to_gameSpaceFragment" app:destination="@id/gameSpaceFragment"
                 app:popUpTo="@+id/menuFragment" app:popUpToInclusive="false"/>
+        <action android:id="@+id/action_menuFragment_to_gameDetectiveFragment"
+                app:destination="@id/gameDetectiveFragment" app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/gameSpaceFragment" android:name="com.example.myadventure.game_space.GameSpaceFragment"
               android:label="game_space_fragment" tools:layout="@layout/game_space_fragment">
@@ -18,6 +20,18 @@
     <fragment android:id="@+id/gameSpaceWonFragment"
               android:name="com.example.myadventure.game_space.GameSpaceWonFragment"
               android:label="game_space_won_fragment" tools:layout="@layout/game_space_won_fragment">
+        <argument android:name="gameId" app:argType="long"/>
+    </fragment>
+    <fragment android:id="@+id/gameDetectiveFragment"
+              android:name="com.example.myadventure.game_space.GameDetectiveFragment"
+              android:label="game_detective_fragment" tools:layout="@layout/game_detective_fragment">
+        <action android:id="@+id/action_gameDetectiveFragment_to_gameDetectiveWonFragment"
+                app:destination="@id/gameDetectiveWonFragment" app:popUpTo="@+id/gameDetectiveFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment android:id="@+id/gameDetectiveWonFragment"
+              android:name="com.example.myadventure.game_space.GameDetectiveWonFragment"
+              android:label="game_detective_won_fragment" tools:layout="@layout/game_detective_won_fragment">
         <argument android:name="gameId" app:argType="long"/>
     </fragment>
 </navigation>

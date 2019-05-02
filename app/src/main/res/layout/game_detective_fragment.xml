@@ -6,43 +6,43 @@
     <data>
 
         <variable
-                name="gameSpaceViewModel"
-                type="com.example.myadventure.game_space.GameSpaceViewModel" />
+                name="gameDetectiveViewModel"
+                type="com.example.myadventure.game_space.GameDetectiveViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/gameConstraintLayout">
         <TextView
-                android:text="@{gameSpaceViewModel.questionString}"
+                android:text="@{gameDetectiveViewModel.questionString}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="200dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="100dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="100dp"/>
         <Button
-                android:text="@{gameSpaceViewModel.answerString[0]}"
+                android:text="@{gameDetectiveViewModel.answerString[0]}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/button"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="100dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:onClick="@{() -> gameSpaceViewModel.answerQuestion(0)}" app:layout_constraintHorizontal_bias="0.0"/>
+                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(0)}" app:layout_constraintHorizontal_bias="0.0"/>
         <Button
-                android:text="@{gameSpaceViewModel.answerString[1]}"
+                android:text="@{gameDetectiveViewModel.answerString[1]}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/button2"
                 android:layout_marginStart="25dp" app:layout_constraintStart_toEndOf="@+id/button"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="150dp"
                 app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{() -> gameSpaceViewModel.answerQuestion(1)}" />
+                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(1)}" />
         <Button
-                android:text="@{gameSpaceViewModel.answerString[2]}"
+                android:text="@{gameDetectiveViewModel.answerString[2]}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/button3"
                 android:layout_marginStart="25dp" app:layout_constraintStart_toEndOf="@+id/button2"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="50dp"
                 android:layout_marginBottom="100dp" app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{() -> gameSpaceViewModel.answerQuestion(2)}" />
+                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(2)}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

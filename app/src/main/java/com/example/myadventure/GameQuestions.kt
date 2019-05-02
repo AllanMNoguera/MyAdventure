@@ -1,17 +1,24 @@
 package com.example.myadventure
 
 import android.content.res.Resources
-import androidx.lifecycle.MutableLiveData
 
-var questionsSpace = listOf<String>("uno", "dos", "tres")
-var anwsersSpace = listOf<String>("A", "B", "C")
+var questionsSpace = listOf<String>("uno", "dos", "tres", "cuatro", "cinco")
+var anwsersSpace = mutableListOf<String>("A", "B", "C", "D", "E")
+
+var currentQuestion: String = ""
 
 fun getSpaceQuestion(): String {
-    return questionsSpace.shuffled()[0]
+
+    currentQuestion = questionsSpace.shuffled()[0]
+    return currentQuestion
 }
 
 fun getSpaceAnswers(): List<String> {
-    return anwsersSpace.shuffled().take(3)
+    var correctAnswer = anwsersSpace[questionsSpace.indexOf(currentQuestion)]
+    var currentAnswers = anwsersSpace.shuffled().take(3)
+    if(currentAnswers.indexOf(correctAnswer) < 0)
+        return currentAnswers.take(2).plus(correctAnswer).shuffled()
+    return currentAnswers
 }
 
 fun getSpaceScore(question: String?, answer: String?): Int {
@@ -21,6 +28,9 @@ fun getSpaceScore(question: String?, answer: String?): Int {
     return 0
 }
 
-fun formatString(resources: Resources) {
-
+fun formatString(gameType: String, resources: Resources) {
+    when(gameType) {
+        "game_space" -> println("Invalid number")
+        "game_detective" -> println("Number too low")
+    }
 }

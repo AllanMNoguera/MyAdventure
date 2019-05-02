@@ -6,8 +6,8 @@
     <data>
 
         <variable
-                name="gameSpaceWonViewModel"
-                type="com.example.myadventure.game_space.GameSpaceWonViewModel" />
+                name="gameDetectiveWonViewModel"
+                type="com.example.myadventure.game_space.GameDetectiveWonViewModel" />
     </data>
     <TextView
             android:layout_width="match_parent"
@@ -15,6 +15,6 @@
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
-            android:text="@{gameSpaceWonViewModel.scoreString}"/>
+            android:text="@{gameDetectiveWonViewModel.scoreString}"/>
 
 </layout>

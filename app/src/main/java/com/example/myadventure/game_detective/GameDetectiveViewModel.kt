@@ -9,7 +9,7 @@ import com.example.myadventure.getSpaceQuestion
 import com.example.myadventure.getSpaceScore
 import kotlinx.coroutines.*
 
-class GameSpaceViewModel(
+class GameDetectiveViewModel(
         val database: GameDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 
@@ -33,13 +33,13 @@ class GameSpaceViewModel(
             answers
         }
 
-        private val _navigateToGameOneScore = MutableLiveData<Game>()
+        private val _navigateToGameTwoScore = MutableLiveData<Game>()
 
         val navigateToGameScore: LiveData<Game>
-        get() = _navigateToGameOneScore
+        get() = _navigateToGameTwoScore
 
         fun doneNavigating() {
-            _navigateToGameOneScore.value = null
+            _navigateToGameTwoScore.value = null
         }
 
         init {
@@ -54,7 +54,7 @@ class GameSpaceViewModel(
 
         private fun initializeGame() {
             uiScope.launch {
-                thisgame.value = Game(gameName = "space_game", gameScore = 0)
+                thisgame.value = Game(gameName = "space_detective", gameScore = 0)
             }
         }
 
@@ -89,7 +89,7 @@ class GameSpaceViewModel(
 
                 endGame.gameId = insert(endGame)
 
-                _navigateToGameOneScore.value = endGame
+                _navigateToGameTwoScore.value = endGame
             }
         }
 

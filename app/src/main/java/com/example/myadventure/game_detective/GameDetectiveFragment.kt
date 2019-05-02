@@ -11,38 +11,38 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.myadventure.R
 import com.example.myadventure.database.GameDatabase
-import com.example.myadventure.databinding.GameSpaceFragmentBinding
+import com.example.myadventure.databinding.GameDetectiveFragmentBinding
 
-class GameSpaceFragment : Fragment() {
+class GameDetectiveFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         // Get a reference to the binding object and inflate the fragment views.
-        val binding: GameSpaceFragmentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.game_space_fragment, container, false)
+        val binding: GameDetectiveFragmentBinding = DataBindingUtil.inflate(
+            inflater, R.layout.game_detective_fragment, container, false)
 
         val application = requireNotNull(this.activity).application
 
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
 
-        val viewModelFactory = GameSpaceViewModelFactory(dataSource, application)
+        val viewModelFactory = GameDetectiveViewModelFactory(dataSource, application)
 
-        val gameSpaceViewModel =
+        val gameDetectiveViewModel =
             ViewModelProviders.of(
-                this, viewModelFactory).get(GameSpaceViewModel::class.java)
+                this, viewModelFactory).get(GameDetectiveViewModel::class.java)
 
-        binding.gameSpaceViewModel = gameSpaceViewModel
+        binding.gameDetectiveViewModel = gameDetectiveViewModel
 
         binding.setLifecycleOwner(this)
 
         // Add an Observer on the state variable for Navigating when STOP button is pressed.
-        gameSpaceViewModel.navigateToGameScore.observe(this, Observer { game ->
+        gameDetectiveViewModel.navigateToGameScore.observe(this, Observer { game ->
             game?.let {
                 this.findNavController().navigate(
-                    GameSpaceFragmentDirections
-                        .actionGameSpaceFragmentToGameSpaceWonFragment(game.gameId)
+                    GameDetectiveFragmentDirections
+                        .actionGameDetectiveFragmentToGameDetectiveWonFragment(game.gameId)
                 )
-                gameSpaceViewModel.doneNavigating()
+                gameDetectiveViewModel.doneNavigating()
             }
         })
 

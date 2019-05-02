@@ -5,7 +5,7 @@ import com.example.myadventure.database.Game
 import com.example.myadventure.database.GameDatabaseDao
 import kotlinx.coroutines.*
 
-class GameSpaceWonViewModel(
+class GameDetectiveWonViewModel(
     private val gameKey: Long = 0L,
     val database: GameDatabaseDao) : ViewModel() {
 
