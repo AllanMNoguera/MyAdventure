@@ -54,7 +54,7 @@ class GameDetectiveViewModel(
 
         private fun initializeGame() {
             uiScope.launch {
-                thisgame.value = Game(gameName = "space_detective", gameScore = 0)
+                thisgame.value = Game(gameName = "detective_game", gameScore = 0)
             }
         }
 

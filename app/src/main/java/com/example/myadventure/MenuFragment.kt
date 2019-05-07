@@ -22,6 +22,10 @@ class MenuFragment : Fragment() {
             v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameSpaceFragment())
         }
 
+        binding.buttonTutorialSpace.setOnClickListener { v: View ->
+            v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToTutorialSpaceFragment())
+        }
+
         binding.buttonStartGameTwo.setOnClickListener { v: View ->
             v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameDetectiveFragment())
         }

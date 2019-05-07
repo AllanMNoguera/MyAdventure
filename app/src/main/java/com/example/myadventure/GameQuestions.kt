@@ -8,7 +8,6 @@ var anwsersSpace = mutableListOf<String>("A", "B", "C", "D", "E")
 var currentQuestion: String = ""
 
 fun getSpaceQuestion(): String {
-
     currentQuestion = questionsSpace.shuffled()[0]
     return currentQuestion
 }
