@@ -21,7 +21,9 @@ class TutorialSpaceFragment : Fragment() {
         val binding: TutorialSpaceFragmentBinding = DataBindingUtil.inflate(
             inflater, R.layout.tutorial_space_fragment, container, false)
 
-        val viewModelFactory = TutorialSpaceViewModelFactory()
+        val application = requireNotNull(this.activity).application
+
+        val viewModelFactory = TutorialSpaceViewModelFactory(application, R.raw.dialoguecolourblindness)
 
         val tutorialSpaceViewModel =
             ViewModelProviders.of(

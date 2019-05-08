@@ -1,15 +1,17 @@
 package com.example.myadventure.game_space
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel;
-import com.example.myadventure.database.Game
+import android.app.Application
+import android.media.MediaPlayer
+import androidx.lifecycle.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class TutorialSpaceViewModel : ViewModel() {
+class TutorialSpaceViewModel (
+    application: Application,
+    Uri: Int) : AndroidViewModel(application) {
+
+    private val mediaPlayer: MediaPlayer = MediaPlayer.create(application, Uri);
 
     private var viewModelJob = Job()
 
@@ -24,8 +26,16 @@ class TutorialSpaceViewModel : ViewModel() {
         _navigateToGame.value = null
     }
 
+    init {
+        mediaPlayer.start()
+        mediaPlayer.setOnCompletionListener { mp: MediaPlayer? ->
+            _navigateToGame.value = 0
+        }
+    }
+
     fun onFinishTutorial() {
         _navigateToGame.value = 0
+        mediaPlayer.stop()
     }
 
     /**
@@ -35,6 +45,7 @@ class TutorialSpaceViewModel : ViewModel() {
      * using memory and resources.
      */
     override fun onCleared() {
+        mediaPlayer.stop()
         super.onCleared()
         viewModelJob.cancel()
     }
