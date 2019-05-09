@@ -1,7 +1,6 @@
 package com.example.myadventure.database
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -18,6 +17,12 @@ interface GameDatabaseDao {
     @Query("SELECT * from game_performance_table WHERE gameId = :key")
     fun get(key: Long): LiveData<Game>
 
-    @Query("SELECT * FROM game_performance_table ORDER BY gameId DESC LIMIT 1")
-    fun getThisGame(): Game
+    @Insert
+    fun insert(game: Pin):Long
+
+    @Update
+    fun update(game: Pin)
+
+    @Query("SELECT * from report_pin_table WHERE pinId = :key")
+    fun getPin(key: Long): LiveData<Pin>
 }

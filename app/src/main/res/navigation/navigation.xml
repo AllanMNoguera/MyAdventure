@@ -42,4 +42,7 @@
         <action android:id="@+id/action_tutorialSpaceFragment_to_gameDetectiveFragment"
                 app:destination="@id/gameDetectiveFragment" app:popUpTo="@+id/menuFragment"/>
     </fragment>
+    <fragment android:id="@+id/reportLoginFragment"
+              android:name="com.example.myadventure.report_module.ReportLoginFragment"
+              android:label="report_login_fragment" tools:layout="@layout/report_login_fragment"/>
 </navigation>
