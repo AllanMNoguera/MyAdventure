@@ -38,11 +38,16 @@
     </fragment>
     <fragment android:id="@+id/tutorialSpaceFragment"
               android:name="com.example.myadventure.game_space.TutorialSpaceFragment"
-              android:label="TutorialSpaceFragment">
+              android:label="tutorial_space_fragment">
         <action android:id="@+id/action_tutorialSpaceFragment_to_gameDetectiveFragment"
                 app:destination="@id/gameDetectiveFragment" app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/reportLoginFragment"
               android:name="com.example.myadventure.report_module.ReportLoginFragment"
-              android:label="report_login_fragment" tools:layout="@layout/report_login_fragment"/>
+              android:label="report_login_fragment" tools:layout="@layout/report_login_fragment">
+        <action android:id="@+id/action_reportLoginFragment_to_reportFragment" app:destination="@id/reportFragment"
+                app:popUpTo="@+id/menuFragment"/>
+    </fragment>
+    <fragment android:id="@+id/reportFragment" android:name="com.example.myadventure.report_module.ReportFragment"
+              android:label="report_fragment" tools:layout="@layout/report_fragment"/>
 </navigation>

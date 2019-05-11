@@ -24,5 +24,5 @@ interface GameDatabaseDao {
     fun update(pin: Pin)
 
     @Query("SELECT * from report_pin_table ORDER BY pinId LIMIT 1")
-    fun getPin(): LiveData<Pin>
+    fun getPin(): LiveData<Pin?>
 }

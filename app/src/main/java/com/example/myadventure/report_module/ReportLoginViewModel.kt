@@ -20,7 +20,7 @@ class ReportLoginViewModel (
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var pin = database.getPin()
+    private var pin:LiveData<Pin?> = database.getPin()
     private var inputPin: Pin? = null
     private var newPin: Pin? = null
 
@@ -35,9 +35,9 @@ class ReportLoginViewModel (
         }
     }
 
-    private val _navigateToReport = MutableLiveData<Pin>()
+    private val _navigateToReport = MutableLiveData<Pin?>()
 
-    val navigateToReport: LiveData<Pin>
+    val navigateToReport: LiveData<Pin?>
         get() = _navigateToReport
 
     fun doneNavigating() {
@@ -57,9 +57,10 @@ class ReportLoginViewModel (
                 newPin = Pin(pin = editText.text.toString().toInt())
                 editText.text.clear()
             } else if (inputPin == null && pin.value != null) {
+                System.out.println(pin.value)
                 inputPin = Pin(pin = editText.text.toString().toInt())
                 if(pin.value!!.pin == inputPin!!.pin) {
-                    _navigateToReport.value = pin.value
+                    _navigateToReport.value = inputPin
                 } else {
                     inputPin = null
                 }
