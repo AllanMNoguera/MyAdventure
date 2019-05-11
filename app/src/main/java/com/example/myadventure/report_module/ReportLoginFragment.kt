@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 
 import com.example.myadventure.R
 import com.example.myadventure.database.GameDatabase
+import com.example.myadventure.database.Pin
 import com.example.myadventure.databinding.ReportLoginFragmentBinding
 
 class ReportLoginFragment : Fragment() {
@@ -23,7 +25,7 @@ class ReportLoginFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
 
-        val viewModelFactory = ReportLoginViewModelFactory(dataSource)
+        val viewModelFactory = ReportLoginViewModelFactory(dataSource, binding.pinEdit)
 
         val reportLoginViewModel =
             ViewModelProviders.of(
@@ -34,15 +36,16 @@ class ReportLoginFragment : Fragment() {
         binding.setLifecycleOwner(this)
 
         // Add an Observer on the state variable for Navigating when STOP button is pressed.
-//        viewModelFactory.navigateToGameScore.observe(this, Observer { game ->
-//            game?.let {
+        reportLoginViewModel.navigateToReport.observe(this, Observer { pin: Pin ->
+            pin?.let {
 //                this.findNavController().navigate(
 //                    GameSpaceFragmentDirections
 //                        .actionGameSpaceFragmentToGameSpaceWonFragment(game.gameId)
 //                )
 //                gameSpaceViewModel.doneNavigating()
-//            }
-//        })
+                System.out.println("Going to report")
+            }
+        })
 
         return binding.root
     }

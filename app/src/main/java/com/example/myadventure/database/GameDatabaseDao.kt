@@ -18,11 +18,11 @@ interface GameDatabaseDao {
     fun get(key: Long): LiveData<Game>
 
     @Insert
-    fun insert(game: Pin):Long
+    fun insert(pin: Pin):Long
 
     @Update
-    fun update(game: Pin)
+    fun update(pin: Pin)
 
-    @Query("SELECT * from report_pin_table WHERE pinId = :key")
-    fun getPin(key: Long): LiveData<Pin>
+    @Query("SELECT * from report_pin_table ORDER BY pinId LIMIT 1")
+    fun getPin(): LiveData<Pin>
 }
