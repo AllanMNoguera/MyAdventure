@@ -8,10 +8,12 @@ buildscript {
         version_material = "1.0.0"
         version_navigation = "1.0.0-beta01"
         version_room = "2.0.0"
+        version_mpchart="v3.1.0"
     }
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'

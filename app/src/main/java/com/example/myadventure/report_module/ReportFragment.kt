@@ -24,7 +24,7 @@ class ReportFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
 
-        val viewModelFactory = ReportViewModelFactory(dataSource, binding.textHolder)
+        val viewModelFactory = ReportViewModelFactory(dataSource, binding.barChartSpaceGame, binding.barChartSpaceGame)
 
         val reportViewModel =
             ViewModelProviders.of(
