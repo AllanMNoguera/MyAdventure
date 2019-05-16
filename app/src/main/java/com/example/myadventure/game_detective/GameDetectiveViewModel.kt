@@ -15,7 +15,7 @@ class GameDetectiveViewModel(
         application: Application,
         Uri: Int) : AndroidViewModel(application) {
 
-        private val mediaPlayer: MediaPlayer = MediaPlayer.create(application, Uri);
+        private val mediaPlayer: MediaPlayer = MediaPlayer.create(application, Uri)
 
         private var viewModelJob = Job()
 

@@ -19,7 +19,9 @@ class ReportViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var scores: IntArray = IntArray(0)
+    private var scores_space: IntArray = IntArray(0)
+
+    private var scores_detective: IntArray = IntArray(0)
 
     private suspend fun getSpaceScores(): IntArray {
         return withContext(Dispatchers.IO) {
@@ -28,26 +30,30 @@ class ReportViewModel(
         }
     }
 
+    private suspend fun getDetectiveScores(): IntArray {
+        return withContext(Dispatchers.IO) {
+            var latestScores = database.getDetectiveLatestScores()
+            latestScores
+        }
+    }
+
     private fun setupBarChartData() {
         // create BarEntry for Bar Group
         uiScope.launch {
-            scores = getSpaceScores()
-            System.out.println(scores[0])
-            val bargroup = ArrayList<BarEntry>()
-            var id = 0f;
-            for (score in scores.reversedArray()) {
-                bargroup.add(BarEntry(id, score.toFloat(), id.toString()))
-                id++
+            scores_space = getSpaceScores()
+            val bargroupSpace = ArrayList<BarEntry>()
+            var id_space = 0f;
+            for (score in scores_space.reversedArray()) {
+                bargroupSpace.add(BarEntry(id_space, score.toFloat(), id_space.toString()))
+                id_space++
             }
-            // creating dataset for Bar Group
-            val barDataSet = BarDataSet(bargroup, "")
 
-            //barDataSet.color = ContextCompat.getColor(this, R.color.background_material_dark)
+            val barDataSetSpace = BarDataSet(bargroupSpace, "")
 
-            val data = BarData(barDataSet)
-            spaceChart.setData(data)
+            val dataSpace = BarData(barDataSetSpace)
+            spaceChart.setData(dataSpace)
             spaceChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-            spaceChart.xAxis.labelCount = id.toInt()
+            spaceChart.xAxis.labelCount = id_space.toInt()
             spaceChart.xAxis.enableGridDashedLine(5f, 5f, 0f)
             spaceChart.axisRight.enableGridDashedLine(5f, 5f, 0f)
             spaceChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)
@@ -56,6 +62,29 @@ class ReportViewModel(
             spaceChart.legend.isEnabled = false
             spaceChart.setPinchZoom(true)
             spaceChart.data.setDrawValues(false)
+
+            scores_detective = getDetectiveScores()
+            val bargroupDetective = ArrayList<BarEntry>()
+            var id_detective = 0f;
+            for (score in scores_detective.reversedArray()) {
+                bargroupDetective.add(BarEntry(id_detective, score.toFloat(), id_detective.toString()))
+                id_detective++
+            }
+
+            val barDataSetDetective = BarDataSet(bargroupDetective, "")
+
+            val dataDetective = BarData(barDataSetDetective)
+            detectiveChart.setData(dataDetective)
+            detectiveChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+            detectiveChart.xAxis.labelCount = id_detective.toInt()
+            detectiveChart.xAxis.enableGridDashedLine(5f, 5f, 0f)
+            detectiveChart.axisRight.enableGridDashedLine(5f, 5f, 0f)
+            detectiveChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)
+            detectiveChart.description.isEnabled = false
+            detectiveChart.animateY(1000)
+            detectiveChart.legend.isEnabled = false
+            detectiveChart.setPinchZoom(true)
+            detectiveChart.data.setDrawValues(false)
         }
     }
 

@@ -7,7 +7,7 @@
 
         <variable
                 name="gameDetectiveWonViewModel"
-                type="com.example.myadventure.game_space.GameDetectiveWonViewModel" />
+                type="com.example.myadventure.game_space.GameSpaceWonViewModel" />
     </data>
     <TextView
             android:layout_width="match_parent"

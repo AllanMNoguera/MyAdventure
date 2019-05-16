@@ -1,14 +1,20 @@
 package com.example.myadventure.game_space
 
+import android.app.Application
+import android.media.MediaPlayer
 import androidx.lifecycle.*
 import com.example.myadventure.database.Game
 import com.example.myadventure.database.GameDatabaseDao
 import kotlinx.coroutines.*
 
 class GameSpaceWonViewModel(
-    private val gameKey: Long = 0L,
-    val database: GameDatabaseDao) : ViewModel() {
+    val gameKey: Long = 0L,
+    val database: GameDatabaseDao,
+    val application: Application,
+    val Uri: Int) : ViewModel() {
 
+
+    private val mediaPlayer: MediaPlayer = MediaPlayer.create(application, Uri)
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -28,6 +34,10 @@ class GameSpaceWonViewModel(
         _navigateToGameMenu.value = null
     }
 
+    init {
+        mediaPlayer.start()
+    }
+
     /**
      * Called when the ViewModel is dismantled.
      * At this point, we want to cancel all coroutines;
@@ -36,6 +46,7 @@ class GameSpaceWonViewModel(
      */
     override fun onCleared() {
         super.onCleared()
+        mediaPlayer.stop()
         viewModelJob.cancel()
     }
 }
