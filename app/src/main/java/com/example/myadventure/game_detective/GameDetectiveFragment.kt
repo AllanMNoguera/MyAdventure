@@ -25,7 +25,7 @@ class GameDetectiveFragment : Fragment() {
 
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
 
-        val viewModelFactory = GameDetectiveViewModelFactory(dataSource, application)
+        val viewModelFactory = GameDetectiveViewModelFactory(dataSource, application, R.raw.bensoundenigmatic)
 
         val gameDetectiveViewModel =
             ViewModelProviders.of(

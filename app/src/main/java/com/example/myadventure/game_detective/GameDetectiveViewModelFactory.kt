@@ -7,11 +7,12 @@ import com.example.myadventure.database.GameDatabaseDao
 
 class GameDetectiveViewModelFactory(
     private val dataSource: GameDatabaseDao,
-    private val application: Application) : ViewModelProvider.Factory {
+    private val application: Application,
+    private val Uri: Int) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(GameDetectiveViewModel::class.java)) {
-            return GameDetectiveViewModel(dataSource, application) as T
+            return GameDetectiveViewModel(dataSource, application, Uri) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -25,7 +25,7 @@ class GameSpaceFragment : Fragment() {
 
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
 
-        val viewModelFactory = GameSpaceViewModelFactory(dataSource, application)
+        val viewModelFactory = GameSpaceViewModelFactory(dataSource, application, R.raw.bensoundadventure)
 
         val gameSpaceViewModel =
             ViewModelProviders.of(

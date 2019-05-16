@@ -17,6 +17,7 @@ import com.example.myadventure.R
 import com.example.myadventure.database.GameDatabase
 import com.example.myadventure.database.Pin
 import com.example.myadventure.databinding.ReportLoginFragmentBinding
+import kotlinx.android.synthetic.main.report_login_fragment.*
 
 class ReportLoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +38,14 @@ class ReportLoginFragment : Fragment() {
         binding.reportLoginViewModel = reportLoginViewModel
 
         binding.setLifecycleOwner(this)
+
+        binding.pinEdit.setOnFocusChangeListener { v, hasFocus ->
+            v.let {
+                if(!hasFocus){
+                    pinEdit.hideKeyboard()
+                }
+            }
+        }
 
         // Add an Observer on the state variable for Navigating when STOP button is pressed.
         reportLoginViewModel.navigateToReport.observe(this, Observer { pin: Pin? ->

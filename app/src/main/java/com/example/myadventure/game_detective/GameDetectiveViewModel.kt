@@ -1,6 +1,7 @@
 package com.example.myadventure.game_space
 
 import android.app.Application
+import android.media.MediaPlayer
 import androidx.lifecycle.*
 import com.example.myadventure.database.GameDatabaseDao
 import com.example.myadventure.database.Game
@@ -11,7 +12,10 @@ import kotlinx.coroutines.*
 
 class GameDetectiveViewModel(
         val database: GameDatabaseDao,
-        application: Application) : AndroidViewModel(application) {
+        application: Application,
+        Uri: Int) : AndroidViewModel(application) {
+
+        private val mediaPlayer: MediaPlayer = MediaPlayer.create(application, Uri);
 
         private var viewModelJob = Job()
 
@@ -45,6 +49,7 @@ class GameDetectiveViewModel(
         init {
             initializeGame()
             setQuestionAnswers()
+            mediaPlayer.start()
         }
 
         private fun setQuestionAnswers() {
@@ -101,6 +106,7 @@ class GameDetectiveViewModel(
          */
         override fun onCleared() {
             super.onCleared()
+            mediaPlayer.stop()
             viewModelJob.cancel()
         }
 }
