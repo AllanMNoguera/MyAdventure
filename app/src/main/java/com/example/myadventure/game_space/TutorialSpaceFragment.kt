@@ -36,9 +36,19 @@ class TutorialSpaceFragment : Fragment() {
             game?.let {
                 this.findNavController().navigate(
                     TutorialSpaceFragmentDirections
-                        .actionTutorialSpaceFragmentToGameDetectiveFragment()
+                        .actionTutorialSpaceFragmentToGameSpaceFragment()
                 )
                 tutorialSpaceViewModel.doneNavigating()
+            }
+        })
+
+        tutorialSpaceViewModel.navigateToNext.observe(this, Observer { page ->
+            page?.let {
+                when(page){
+                    0 -> binding.tutorialView.setImageResource(R.drawable.im_space_tutorial_2)
+                    1 -> binding.tutorialView.setImageResource(R.drawable.im_space_tutorial_3)
+                }
+
             }
         })
 

@@ -39,8 +39,8 @@
     <fragment android:id="@+id/tutorialSpaceFragment"
               android:name="com.example.myadventure.game_space.TutorialSpaceFragment"
               android:label="tutorial_space_fragment">
-        <action android:id="@+id/action_tutorialSpaceFragment_to_gameDetectiveFragment"
-                app:destination="@id/gameDetectiveFragment" app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_tutorialSpaceFragment_to_gameSpaceFragment"
+                app:destination="@id/gameSpaceFragment" app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/reportLoginFragment"
               android:name="com.example.myadventure.report_module.ReportLoginFragment"

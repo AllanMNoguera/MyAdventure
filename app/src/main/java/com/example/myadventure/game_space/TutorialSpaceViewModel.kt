@@ -22,6 +22,11 @@ class TutorialSpaceViewModel (
     val navigateToGame: LiveData<Int>
     get() = _navigateToGame
 
+    private val _navigateToNext = MutableLiveData<Int>()
+
+    val navigateToNext: LiveData<Int>
+        get() = _navigateToNext
+
     fun doneNavigating() {
         _navigateToGame.value = null
     }
@@ -30,6 +35,17 @@ class TutorialSpaceViewModel (
         mediaPlayer.start()
         mediaPlayer.setOnCompletionListener { mp: MediaPlayer? ->
             _navigateToGame.value = 0
+        }
+    }
+
+    fun onNext() {
+        if(_navigateToNext.value == null){
+            _navigateToNext.value = 0
+        } else {
+            _navigateToNext.value = _navigateToNext.value!! + 1
+        }
+        if(_navigateToNext.value!! >= 2){
+            onFinishTutorial()
         }
     }
 
