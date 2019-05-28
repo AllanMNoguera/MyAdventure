@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">My Adventure</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_fragment">Menu</string>
+
+    <string name="game_space_fragment">Juego</string>
+
+    <string name="won_fragment">¡Excelente!</string>
+
+    <string name="tutorial_fragment">¡Vamos!</string>
+
+    <string name="game_detective_fragment">Juego</string>
+
+    <string name="report_login_fragment">Log in</string>
+
+    <string name="report_fragment">Reportes</string>
 </resources>

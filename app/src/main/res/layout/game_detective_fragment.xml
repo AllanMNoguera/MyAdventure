@@ -12,11 +12,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/gameConstraintLayout">
+        <ImageView
+                android:src="@drawable/im_detective_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imGameBg" android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        />
         <TextView
                 android:text="@{gameDetectiveViewModel.questionString}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="200dp"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="100dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="100dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="100dp"/>
         <Button
@@ -24,25 +31,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/btAnswerOne"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="100dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="50dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="35dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(0)}" app:layout_constraintHorizontal_bias="0.0"/>
+                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(0)}"
+                app:layout_constraintHorizontal_bias="0.0"/>
         <Button
                 android:text="@{gameDetectiveViewModel.answerString[1]}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/btAnswerTwo"
-                android:layout_marginStart="25dp" app:layout_constraintStart_toEndOf="@+id/btAnswerOne"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="150dp"
-                app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(1)}" />
+                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(1)}"
+                app:layout_constraintStart_toEndOf="@+id/btAnswerOne"
+                android:layout_marginBottom="100dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/btAnswerThree" android:layout_marginEnd="35dp"/>
         <Button
                 android:text="@{gameDetectiveViewModel.answerString[2]}"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button3"
-                android:layout_marginStart="25dp" app:layout_constraintStart_toEndOf="@+id/btAnswerTwo"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="50dp"
+                android:layout_height="wrap_content" android:id="@+id/btAnswerThree"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="35dp"
                 android:layout_marginBottom="100dp" app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(2)}" />
+                android:onClick="@{() -> gameDetectiveViewModel.answerQuestion(2)}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

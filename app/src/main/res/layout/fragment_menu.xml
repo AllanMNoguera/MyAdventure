@@ -11,7 +11,7 @@
                 android:layout_width="350dp"
                 android:id="@+id/buttonStartGameOne"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="32dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="15dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="30dp" android:layout_marginStart="30dp"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:background="@drawable/bt_space_game" android:backgroundTintMode="src_over"
@@ -19,19 +19,32 @@
         <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp" android:id="@+id/buttonTutorialSpace"
-                app:layout_constraintTop_toBottomOf="@+id/buttonStartGameOne"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="50dp" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.934"
-                android:background="@drawable/bt_tutorial"/>
+                android:background="@drawable/bt_tutorial"
+                android:layout_marginStart="30dp" app:layout_constraintStart_toStartOf="@+id/buttonStartGameOne"
+                android:layout_marginTop="12dp" app:layout_constraintTop_toTopOf="@+id/buttonStartGameOne"/>
         <Button
                 android:layout_width="350dp"
                 android:layout_height="200dp" android:id="@+id/buttonStartGameTwo"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:background="@drawable/bt_detective_game"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="15dp"
                 app:layout_constraintTop_toBottomOf="@+id/buttonStartGameOne"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="32dp"/>
+        <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp" android:id="@+id/buttonTutorialDetective"
+                android:background="@drawable/bt_tutorial"
+                app:layout_constraintStart_toStartOf="@+id/buttonStartGameTwo"
+                android:layout_marginStart="30dp" android:layout_marginTop="10dp"
+                app:layout_constraintTop_toTopOf="@+id/buttonStartGameTwo"/>
+        <Button
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:id="@+id/buttonEmpty"
+                android:background="@drawable/bt_empty" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="32dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp" android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/buttonStartGameTwo"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
