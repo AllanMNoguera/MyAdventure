@@ -2,8 +2,8 @@ package com.example.myadventure
 
 import android.content.res.Resources
 
-var questionsSpace = listOf<String>("uno", "dos", "tres", "cuatro", "cinco")
-var anwsersSpace = mutableListOf<String>("A", "B", "C", "D", "E")
+var questionsSpace = listOf<String>("6", "12", "2", "42")
+var anwsersSpace = mutableListOf<String>("6", "12", "2", "42")
 
 var currentQuestion: String = ""
 

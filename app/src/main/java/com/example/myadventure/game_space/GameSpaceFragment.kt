@@ -46,6 +46,17 @@ class GameSpaceFragment : Fragment() {
             }
         })
 
+        gameSpaceViewModel.questionString.observe(this, Observer { image ->
+            image?.let {
+                when(image){
+                    "6" -> binding.questionView.setBackgroundResource(R.drawable.im_space_1)
+                    "12" -> binding.questionView.setBackgroundResource(R.drawable.im_space_2)
+                    "2" -> binding.questionView.setBackgroundResource(R.drawable.im_space_3)
+                    "42" -> binding.questionView.setBackgroundResource(R.drawable.im_space_4)
+                }
+            }
+        })
+
         return binding.root
     }
 }

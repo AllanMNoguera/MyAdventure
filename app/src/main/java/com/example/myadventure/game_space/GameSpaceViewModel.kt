@@ -30,7 +30,7 @@ class GameSpaceViewModel(
         private var tries = 10
 
         val questionString: LiveData<String> = Transformations.map(question) { question ->
-            question
+                question
         }
 
         val answerString: LiveData<List<String>> = Transformations.map(answers) { answers ->
