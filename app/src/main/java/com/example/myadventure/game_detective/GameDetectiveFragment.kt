@@ -46,6 +46,42 @@ class GameDetectiveFragment : Fragment() {
             }
         })
 
+        gameDetectiveViewModel.questionString.observe(this, Observer { image ->
+            image?.let {
+                when(image){
+                    "cellphone" -> binding.questionView.setBackgroundResource(R.drawable.im_detective_1)
+                    "camera" -> binding.questionView.setBackgroundResource(R.drawable.im_detective_2)
+                    "map" -> binding.questionView.setBackgroundResource(R.drawable.im_detective_3)
+                    else -> binding.questionView.setBackgroundResource(R.drawable.im_detective_1)
+                }
+            }
+        })
+
+        gameDetectiveViewModel.answerString.observe(this, Observer { image ->
+            image?.let {
+                if(image.isNotEmpty()) {
+                    when (image[0]) {
+                        "cellphone" -> binding.btAnswerOne.setBackgroundResource(R.drawable.im_detective_answer_1)
+                        "camera" -> binding.btAnswerOne.setBackgroundResource(R.drawable.im_detective_answer_2)
+                        "map" -> binding.btAnswerOne.setBackgroundResource(R.drawable.im_detective_answer_3)
+                        else -> binding.btAnswerOne.setBackgroundResource(R.drawable.im_detective_answer_1)
+                    }
+                    when (image[1]) {
+                        "cellphone" -> binding.btAnswerTwo.setBackgroundResource(R.drawable.im_detective_answer_1)
+                        "camera" -> binding.btAnswerTwo.setBackgroundResource(R.drawable.im_detective_answer_2)
+                        "map" -> binding.btAnswerTwo.setBackgroundResource(R.drawable.im_detective_answer_3)
+                        else -> binding.btAnswerTwo.setBackgroundResource(R.drawable.im_detective_answer_1)
+                    }
+                    when (image[2]) {
+                        "cellphone" -> binding.btAnswerThree.setBackgroundResource(R.drawable.im_detective_answer_1)
+                        "camera" -> binding.btAnswerThree.setBackgroundResource(R.drawable.im_detective_answer_2)
+                        "map" -> binding.btAnswerThree.setBackgroundResource(R.drawable.im_detective_answer_3)
+                        else -> binding.btAnswerThree.setBackgroundResource(R.drawable.im_detective_answer_1)
+                    }
+                }
+            }
+        })
+
         return binding.root
     }
 }

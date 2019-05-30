@@ -5,6 +5,10 @@ import android.content.res.Resources
 var questionsSpace = listOf<String>("6", "12", "2", "42")
 var anwsersSpace = mutableListOf<String>("6", "12", "2", "42")
 
+
+var questionsDetective = listOf<String>("cellphone", "camera", "map")
+var anwsersDetective = mutableListOf<String>("cellphone", "camera", "map")
+
 var currentQuestion: String = ""
 
 fun getSpaceQuestion(): String {
@@ -27,9 +31,22 @@ fun getSpaceScore(question: String?, answer: String?): Int {
     return 0
 }
 
-fun formatString(gameType: String, resources: Resources) {
-    when(gameType) {
-        "game_space" -> println("Invalid number")
-        "game_detective" -> println("Number too low")
+fun getDetectiveQuestion(): String {
+    currentQuestion = questionsDetective.shuffled()[0]
+    return currentQuestion
+}
+
+fun getDetectiveAnswers(): List<String> {
+    var correctAnswer = anwsersDetective[questionsDetective.indexOf(currentQuestion)]
+    var currentAnswers = anwsersDetective.shuffled().take(3)
+    if(currentAnswers.indexOf(correctAnswer) < 0)
+        return currentAnswers.take(2).plus(correctAnswer).shuffled()
+    return currentAnswers
+}
+
+fun getDetectiveScore(question: String?, answer: String?): Int {
+    if(questionsDetective.indexOf(question).equals(anwsersDetective.indexOf(answer))){
+        return 2
     }
+    return 0
 }

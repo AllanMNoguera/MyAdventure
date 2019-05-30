@@ -3,11 +3,9 @@ package com.example.myadventure.game_space
 import android.app.Application
 import android.media.MediaPlayer
 import androidx.lifecycle.*
+import com.example.myadventure.*
 import com.example.myadventure.database.GameDatabaseDao
 import com.example.myadventure.database.Game
-import com.example.myadventure.getSpaceAnswers
-import com.example.myadventure.getSpaceQuestion
-import com.example.myadventure.getSpaceScore
 import kotlinx.coroutines.*
 
 class GameDetectiveViewModel(
@@ -27,7 +25,7 @@ class GameDetectiveViewModel(
 
         private var answers = MutableLiveData<List<String>>()
 
-        private var tries = 10
+        private var tries = 5
 
         val questionString: LiveData<String> = Transformations.map(question) { question ->
             question
@@ -53,8 +51,8 @@ class GameDetectiveViewModel(
         }
 
         private fun setQuestionAnswers() {
-            question.value = getSpaceQuestion()
-            answers.value = getSpaceAnswers()
+            question.value = getDetectiveQuestion()
+            answers.value = getDetectiveAnswers()
         }
 
         private fun initializeGame() {
@@ -72,12 +70,12 @@ class GameDetectiveViewModel(
 
         fun answerQuestion(answer: Int) {
             if(tries > 0) {
-                val score = getSpaceScore(question.value, answers.value?.get(answer))
+                val score = getDetectiveScore(question.value, answers.value?.get(answer))
                 thisgame.value?.gameScore = thisgame.value?.gameScore!!.plus(score)
                 setQuestionAnswers()
             } else {
                 onEndGame()
-                tries = 10
+                tries = 5
             }
             tries--
         }
