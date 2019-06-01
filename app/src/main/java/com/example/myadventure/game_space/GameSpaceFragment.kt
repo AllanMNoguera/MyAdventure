@@ -53,6 +53,7 @@ class GameSpaceFragment : Fragment() {
                     "12" -> binding.questionView.setBackgroundResource(R.drawable.im_space_2)
                     "2" -> binding.questionView.setBackgroundResource(R.drawable.im_space_3)
                     "42" -> binding.questionView.setBackgroundResource(R.drawable.im_space_4)
+                    "74" -> binding.questionView.setBackgroundResource(R.drawable.im_space_5)
                 }
             }
         })

@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">My Adventure</string>
+    <string name="app_name">Mi Aventura</string>
 
-    <string name="menu_fragment">Menu</string>
+    <string name="menu_fragment">Mi Aventura</string>
 
     <string name="game_space_fragment">Juego</string>
 
@@ -14,4 +14,12 @@
     <string name="report_login_fragment">Log in</string>
 
     <string name="report_fragment">Reportes</string>
+
+    <string name="report_title_space">Daltonismo</string>
+
+    <string name="report_title_detective">Dislexia</string>
+
+    <string name="report_disclaimer_1">*La calificacion en promedio debe ser mayor a 6.</string>
+
+    <string name="report_disclaimer_2">*Esto no es un diagnostico, consulte a un medico.</string>
 </resources>

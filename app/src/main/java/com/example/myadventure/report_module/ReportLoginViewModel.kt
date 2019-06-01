@@ -29,9 +29,9 @@ class ReportLoginViewModel (
      */
     val pinMessage: LiveData<String> = Transformations.map(pin) { pin ->
         if(pin==null) {
-            "Please create a 5 digit pin"
+            "Crear un pin de 5 digitos"
         } else {
-            "Please enter pin"
+            "Ingresa tu pin"
         }
     }
 
