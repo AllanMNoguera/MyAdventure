@@ -24,4 +24,16 @@
     <string name="report_disclaimer_1">*La calificacion en promedio debe ser mayor a 6.</string>
 
     <string name="report_disclaimer_2">*Esto no es un diagnostico, consulte a un medico.</string>
+
+    <string name="about_title">Acerca de</string>
+
+    <string name="about_first_block">Allan Marcelo Noguera Torres\nUniversidad de San Carlos de Guatemala</string>
+
+    <string name="about_second_title">Musica</string>
+
+    <string name="about_second_block">Musica de los tutoriales - Josh Woodward\nMusica de los juegos - https://www.bensound.com</string>
+
+    <string name="about_third_title">Imagenes</string>
+
+    <string name="about_third_block">Imagenes test Ishihara - https://www.kisspng.com/</string>
 </resources>
