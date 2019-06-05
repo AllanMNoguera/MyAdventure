@@ -53,14 +53,14 @@ class ReportLoginViewModel (
 
     fun pinRead() {
         if (editText.text.toString()!!.length >= 5) {
-            if(pin.value == null) {
+            if(pin.value == null && newPin == null) {
                 newPin = Pin(pin = editText.text.toString().toInt())
-                editText.text.clear()
             } else if (inputPin == null && pin.value != null) {
                 System.out.println(pin.value)
                 inputPin = Pin(pin = editText.text.toString().toInt())
                 if(pin.value!!.pin == inputPin!!.pin) {
                     _navigateToReport.value = inputPin
+                    inputPin = null
                 } else {
                     inputPin = null
                 }
