@@ -35,6 +35,8 @@
               android:name="com.example.myadventure.game_space.GameSpaceWonFragment"
               android:label="@string/won_fragment" tools:layout="@layout/game_space_won_fragment">
         <argument android:name="gameId" app:argType="long"/>
+        <action android:id="@+id/action_gameSpaceWonFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/gameDetectiveFragment"
               android:name="com.example.myadventure.game_space.GameDetectiveFragment"
@@ -49,6 +51,8 @@
               android:name="com.example.myadventure.game_space.GameDetectiveWonFragment"
               android:label="@string/won_fragment" tools:layout="@layout/game_detective_won_fragment">
         <argument android:name="gameId" app:argType="long"/>
+        <action android:id="@+id/action_gameDetectiveWonFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/tutorialSpaceFragment"
               android:name="com.example.myadventure.game_space.TutorialSpaceFragment"

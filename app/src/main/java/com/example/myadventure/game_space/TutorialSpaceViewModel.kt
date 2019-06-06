@@ -15,8 +15,6 @@ class TutorialSpaceViewModel (
 
     private var viewModelJob = Job()
 
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
     private val _navigateToGame = MutableLiveData<Int>()
 
     val navigateToGame: LiveData<Int>
@@ -38,6 +36,10 @@ class TutorialSpaceViewModel (
         }
     }
 
+    /**
+     * Metodo que indica incrementalmente cual es la siguiente
+     * imagen del tutorial a mostrar.
+     */
     fun onNext() {
         if(_navigateToNext.value == null){
             _navigateToNext.value = 0
@@ -49,16 +51,18 @@ class TutorialSpaceViewModel (
         }
     }
 
+    /**
+     * Este metodo provoca que se inicie el siguiente
+     * Fragmento.
+     */
     fun onFinishTutorial() {
         _navigateToGame.value = 0
         mediaPlayer.stop()
     }
 
     /**
-     * Called when the ViewModel is dismantled.
-     * At this point, we want to cancel all coroutines;
-     * otherwise we end up with processes that have nowhere to return to
-     * using memory and resources.
+     * Este metodo se llama cuando se destrulle el ViewModel.
+     * Aqui se cancelan todas las corutinas.
      */
     override fun onCleared() {
         mediaPlayer.stop()

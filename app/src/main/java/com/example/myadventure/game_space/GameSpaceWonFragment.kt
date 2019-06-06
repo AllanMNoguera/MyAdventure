@@ -1,5 +1,6 @@
 package com.example.myadventure.game_space
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.myadventure.MainActivity
 import com.example.myadventure.R
 import com.example.myadventure.database.GameDatabase
 import com.example.myadventure.databinding.GameSpaceWonFragmentBinding
+import kotlinx.coroutines.*
+import java.util.concurrent.TimeUnit
 
 class GameSpaceWonFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +40,31 @@ class GameSpaceWonFragment : Fragment() {
                 this, viewModelFactory
             ).get(GameSpaceWonViewModel::class.java)
 
+        gameSpaceWonViewModel.navigateToGameMenu.observe(this, Observer { game ->
+            game?.let {
+                this.findNavController().navigate(
+                    GameSpaceWonFragmentDirections.actionGameSpaceWonFragmentToMenuFragment()
+                )
+                gameSpaceWonViewModel.doneNavigating()
+            }
+        })
+
         binding.gameSpaceWonViewModel = gameSpaceWonViewModel
 
         binding.setLifecycleOwner(this)
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        CoroutineScope(Dispatchers.IO).launch {
+            delay(TimeUnit.SECONDS.toMillis(5))
+            withContext(Dispatchers.Main) {
+                view!!.findNavController().navigate(
+                    GameSpaceWonFragmentDirections.actionGameSpaceWonFragmentToMenuFragment()
+                )
+            }
+        }
     }
 }

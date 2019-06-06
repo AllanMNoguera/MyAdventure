@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.example.myadventure.database.GameDatabase
 import com.example.myadventure.databinding.FragmentMenuBinding
 
 class MenuFragment : Fragment() {
@@ -20,8 +21,15 @@ class MenuFragment : Fragment() {
         val binding: FragmentMenuBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_menu, container, false)
 
+        val application = requireNotNull(this.activity).application
+        val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
+
         binding.buttonStartGameOne.setOnClickListener { v: View ->
-            v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameSpaceFragment())
+            if(dataSource.getSpaceLatestScores().isEmpty()){
+                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToTutorialSpaceFragment())
+            } else {
+                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameSpaceFragment())
+            }
         }
 
         binding.buttonTutorialSpace.setOnClickListener { v: View ->
@@ -29,7 +37,11 @@ class MenuFragment : Fragment() {
         }
 
         binding.buttonStartGameTwo.setOnClickListener { v: View ->
-            v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameDetectiveFragment())
+            if(dataSource.getDetectiveLatestScores().isEmpty()) {
+                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToTutorialDetectiveFragment())
+            } else {
+                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameDetectiveFragment())
+            }
         }
 
         binding.buttonTutorialDetective.setOnClickListener { v: View ->

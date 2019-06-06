@@ -7,9 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.myadventure.R
 import com.example.myadventure.database.GameDatabase
 import com.example.myadventure.databinding.GameDetectiveWonFragmentBinding
+import kotlinx.coroutines.*
+import java.util.concurrent.TimeUnit
 
 class GameDetectiveWonFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +38,31 @@ class GameDetectiveWonFragment : Fragment() {
                 this, viewModelFactory
             ).get(GameSpaceWonViewModel::class.java)
 
+        gameDetectiveWonViewModel.navigateToGameMenu.observe(this, Observer { game ->
+            game?.let {
+                this.findNavController().navigate(
+                    GameDetectiveWonFragmentDirections.actionGameDetectiveWonFragmentToMenuFragment()
+                )
+                gameDetectiveWonViewModel.doneNavigating()
+            }
+        })
+
         binding.gameDetectiveWonViewModel = gameDetectiveWonViewModel
 
         binding.setLifecycleOwner(this)
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        CoroutineScope(Dispatchers.IO).launch {
+            delay(TimeUnit.SECONDS.toMillis(5))
+            withContext(Dispatchers.Main) {
+                view!!.findNavController().navigate(
+                    GameDetectiveWonFragmentDirections.actionGameDetectiveWonFragmentToMenuFragment()
+                )
+            }
+        }
     }
 }

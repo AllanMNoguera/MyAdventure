@@ -22,7 +22,7 @@ class GameSpaceWonViewModel(
     private var gameScore = database.get(gameKey)
 
     val scoreString: LiveData<String> = Transformations.map(gameScore) { score ->
-        "Score:\n" + score.gameScore
+        "Ganaste:\n ${score.gameScore} pts"
     }
 
     private val _navigateToGameMenu = MutableLiveData<Game>()
@@ -30,6 +30,9 @@ class GameSpaceWonViewModel(
     val navigateToGameMenu: LiveData<Game>
         get() = _navigateToGameMenu
 
+    fun navigateToGameMenu() {
+        _navigateToGameMenu.value = Game()
+    }
     fun doneNavigating() {
         _navigateToGameMenu.value = null
     }
