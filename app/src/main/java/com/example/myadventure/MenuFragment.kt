@@ -8,10 +8,16 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.myadventure.database.GameDatabase
 import com.example.myadventure.databinding.FragmentMenuBinding
+import com.example.myadventure.game_space.GameSpaceFragmentDirections
+import com.example.myadventure.report_module.ReportViewModel
+import com.example.myadventure.report_module.ReportViewModelFactory
 
 class MenuFragment : Fragment() {
     override fun onCreateView(
@@ -24,29 +30,60 @@ class MenuFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
 
-        binding.buttonStartGameOne.setOnClickListener { v: View ->
-            if(dataSource.getSpaceLatestScores().isEmpty()){
-                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToTutorialSpaceFragment())
-            } else {
-                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameSpaceFragment())
-            }
-        }
+        val viewModelFactory = MenuViewModelFactory(dataSource)
+
+        val menuViewModel =
+            ViewModelProviders.of(
+                this, viewModelFactory
+            ).get(MenuViewModel::class.java)
 
         binding.buttonTutorialSpace.setOnClickListener { v: View ->
             v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToTutorialSpaceFragment())
         }
 
-        binding.buttonStartGameTwo.setOnClickListener { v: View ->
-            if(dataSource.getDetectiveLatestScores().isEmpty()) {
-                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToTutorialDetectiveFragment())
-            } else {
-                v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToGameDetectiveFragment())
-            }
-        }
-
         binding.buttonTutorialDetective.setOnClickListener { v: View ->
             v.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToTutorialDetectiveFragment())
         }
+
+        menuViewModel.navigateToGameOne.observe(this, Observer { game ->
+            game?.let {
+                this.findNavController().navigate(
+                    MenuFragmentDirections.actionMenuFragmentToGameSpaceFragment()
+                )
+                menuViewModel.doneNavigating()
+            }
+        })
+
+        menuViewModel.navigateToGameTwo.observe(this, Observer { game ->
+            game?.let {
+                this.findNavController().navigate(
+                    MenuFragmentDirections.actionMenuFragmentToGameDetectiveFragment()
+                )
+                menuViewModel.doneNavigating()
+            }
+        })
+
+        menuViewModel.navigateToGameTutorialOne.observe(this, Observer { game ->
+            game?.let {
+                this.findNavController().navigate(
+                    MenuFragmentDirections.actionMenuFragmentToTutorialSpaceFragment()
+                )
+                menuViewModel.doneNavigating()
+            }
+        })
+
+        menuViewModel.navigateToGameTutorialTwo.observe(this, Observer { game ->
+            game?.let {
+                this.findNavController().navigate(
+                    MenuFragmentDirections.actionMenuFragmentToTutorialDetectiveFragment()
+                )
+                menuViewModel.doneNavigating()
+            }
+        })
+
+        binding.menuViewModel = menuViewModel
+
+        binding.setLifecycleOwner(this)
 
         setHasOptionsMenu(true)
         return binding.root

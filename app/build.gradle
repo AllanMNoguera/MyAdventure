@@ -32,6 +32,10 @@ android {
 }
 
 dependencies {
+    // Navigation
+    implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // Kotlin
@@ -46,9 +50,6 @@ dependencies {
     // Material Design
     implementation "com.google.android.material:material:$version_material"
 
-    // Navigation
-    implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
-    implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
 
     // Room and Lifecycle dependencies
     implementation "androidx.room:room-runtime:$version_room"

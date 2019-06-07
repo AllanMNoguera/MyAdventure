@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
              tools:context="com.example.myadventure.MenuFragment">
+    <data>
+
+        <variable
+                name="menuViewModel"
+                type="com.example.myadventure.MenuViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/menuConstraint"
@@ -16,7 +22,8 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="1dp"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="1dp"/>
+                android:layout_marginEnd="1dp"
+                android:onClick="@{() -> menuViewModel.onClickButtonGameOne()}"/>
         <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp" android:id="@+id/buttonTutorialSpace"
@@ -31,7 +38,8 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintTop_toBottomOf="@+id/buttonStartGameOne" android:layout_marginStart="1dp"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="1dp"/>
+                android:layout_marginEnd="1dp"
+                android:onClick="@{() -> menuViewModel.onClickButtonGameTwo()}"/>
         <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp" android:id="@+id/buttonTutorialDetective"
