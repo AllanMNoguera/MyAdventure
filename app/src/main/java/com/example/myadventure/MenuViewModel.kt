@@ -47,7 +47,7 @@ class MenuViewModel(
 
     fun onClickButtonGameTwo(){
         uiScope.launch {
-            if(getSpaceScores().isEmpty()){
+            if(getDetectiveScores().isEmpty()){
                 _navigateToGameTutorialTwo.value = 1
             } else {
                 _navigateToGameTwo.value = 1
