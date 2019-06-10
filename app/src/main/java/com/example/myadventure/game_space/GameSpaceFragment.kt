@@ -15,6 +15,9 @@ import com.example.myadventure.database.GameDatabase
 import com.example.myadventure.databinding.GameSpaceFragmentBinding
 
 class GameSpaceFragment : Fragment() {
+
+    private lateinit var gameSpaceViewModel: GameSpaceViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -27,7 +30,7 @@ class GameSpaceFragment : Fragment() {
 
         val viewModelFactory = GameSpaceViewModelFactory(dataSource, application, R.raw.bensoundadventure)
 
-        val gameSpaceViewModel =
+        gameSpaceViewModel =
             ViewModelProviders.of(
                 this, viewModelFactory).get(GameSpaceViewModel::class.java)
 
@@ -59,5 +62,15 @@ class GameSpaceFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        gameSpaceViewModel.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        gameSpaceViewModel.onResume()
     }
 }

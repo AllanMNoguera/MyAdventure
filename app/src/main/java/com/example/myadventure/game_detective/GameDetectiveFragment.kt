@@ -14,6 +14,9 @@ import com.example.myadventure.database.GameDatabase
 import com.example.myadventure.databinding.GameDetectiveFragmentBinding
 
 class GameDetectiveFragment : Fragment() {
+
+    private lateinit var gameDetectiveViewModel: GameDetectiveViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -27,7 +30,7 @@ class GameDetectiveFragment : Fragment() {
 
         val viewModelFactory = GameDetectiveViewModelFactory(dataSource, application, R.raw.bensoundenigmatic)
 
-        val gameDetectiveViewModel =
+        gameDetectiveViewModel =
             ViewModelProviders.of(
                 this, viewModelFactory).get(GameDetectiveViewModel::class.java)
 
@@ -83,5 +86,15 @@ class GameDetectiveFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        gameDetectiveViewModel.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        gameDetectiveViewModel.onResume()
     }
 }

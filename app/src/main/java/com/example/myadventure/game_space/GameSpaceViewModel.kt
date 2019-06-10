@@ -49,7 +49,6 @@ class GameSpaceViewModel(
         init {
             initializeGame()
             setQuestionAnswers()
-            mediaPlayer.start()
         }
 
         private fun setQuestionAnswers() {
@@ -80,6 +79,14 @@ class GameSpaceViewModel(
                 tries = 10
             }
             tries--
+        }
+
+        fun onPause() {
+            mediaPlayer.pause()
+        }
+
+        fun onResume() {
+            mediaPlayer.start()
         }
 
         fun onEndGame() {

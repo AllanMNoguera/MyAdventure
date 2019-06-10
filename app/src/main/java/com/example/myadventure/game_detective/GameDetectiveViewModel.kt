@@ -47,7 +47,6 @@ class GameDetectiveViewModel(
         init {
             initializeGame()
             setQuestionAnswers()
-            mediaPlayer.start()
         }
 
         private fun setQuestionAnswers() {
@@ -78,6 +77,14 @@ class GameDetectiveViewModel(
                 tries = 5
             }
             tries--
+        }
+
+        fun onPause() {
+            mediaPlayer.pause()
+        }
+
+        fun onResume() {
+            mediaPlayer.start()
         }
 
         fun onEndGame() {
