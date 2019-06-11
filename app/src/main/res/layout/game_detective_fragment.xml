@@ -7,7 +7,7 @@
 
         <variable
                 name="gameDetectiveViewModel"
-                type="com.example.myadventure.game_space.GameDetectiveViewModel" />
+                type="com.coffee.myadventure.game_space.GameDetectiveViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

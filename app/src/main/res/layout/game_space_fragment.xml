@@ -7,7 +7,7 @@
 
         <variable
                 name="gameSpaceViewModel"
-                type="com.example.myadventure.game_space.GameSpaceViewModel" />
+                type="com.coffee.myadventure.game_space.GameSpaceViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        tools:context="com.example.myadventure.MainActivity.navigation.reportLoginFragment">
+        tools:context="com.coffee.myadventure.MainActivity.navigation.reportLoginFragment">
         <data>
 
                 <variable
                         name="reportLoginViewModel"
-                        type="com.example.myadventure.report_module.ReportLoginViewModel" />
+                        type="com.coffee.myadventure.report_module.ReportLoginViewModel" />
         </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

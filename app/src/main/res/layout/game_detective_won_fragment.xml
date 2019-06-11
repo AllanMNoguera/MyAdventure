@@ -7,7 +7,7 @@
 
         <variable
                 name="gameDetectiveWonViewModel"
-                type="com.example.myadventure.game_space.GameSpaceWonViewModel" />
+                type="com.coffee.myadventure.game_space.GameSpaceWonViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

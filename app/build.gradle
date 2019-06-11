@@ -10,12 +10,12 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.example.myadventure"
+        applicationId "com.coffee.myadventure"
         minSdkVersion 21
         targetSdkVersion 28
         vectorDrawables.useSupportLibrary = true
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -4,7 +4,7 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_root"
             app:startDestination="@id/menuFragment">
 
-    <fragment android:id="@+id/menuFragment" android:name="com.example.myadventure.MenuFragment"
+    <fragment android:id="@+id/menuFragment" android:name="com.coffee.myadventure.MenuFragment"
               android:label="@string/menu_fragment" tools:layout="@layout/fragment_menu">
         <action android:id="@+id/action_menuFragment_to_gameSpaceFragment" app:destination="@id/gameSpaceFragment"
                 app:popUpTo="@+id/menuFragment" app:popUpToInclusive="false" app:enterAnim="@anim/slide_in_right"
@@ -23,7 +23,7 @@
                 app:exitAnim="@anim/slide_out_left" app:enterAnim="@anim/slide_in_right"
                 app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-    <fragment android:id="@+id/gameSpaceFragment" android:name="com.example.myadventure.game_space.GameSpaceFragment"
+    <fragment android:id="@+id/gameSpaceFragment" android:name="com.coffee.myadventure.game_space.GameSpaceFragment"
               android:label="@string/game_space_fragment" tools:layout="@layout/game_space_fragment">
         <action android:id="@+id/action_gameSpaceFragment_to_gameSpaceWonFragment"
                 app:destination="@id/gameSpaceWonFragment" app:popUpTo="@+id/gameSpaceFragment"
@@ -32,14 +32,14 @@
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment android:id="@+id/gameSpaceWonFragment"
-              android:name="com.example.myadventure.game_space.GameSpaceWonFragment"
+              android:name="com.coffee.myadventure.game_space.GameSpaceWonFragment"
               android:label="@string/won_fragment" tools:layout="@layout/game_space_won_fragment">
         <argument android:name="gameId" app:argType="long"/>
         <action android:id="@+id/action_gameSpaceWonFragment_to_menuFragment" app:destination="@id/menuFragment"
                 app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/gameDetectiveFragment"
-              android:name="com.example.myadventure.game_space.GameDetectiveFragment"
+              android:name="com.coffee.myadventure.game_space.GameDetectiveFragment"
               android:label="@string/game_detective_fragment" tools:layout="@layout/game_detective_fragment">
         <action android:id="@+id/action_gameDetectiveFragment_to_gameDetectiveWonFragment"
                 app:destination="@id/gameDetectiveWonFragment" app:popUpTo="@+id/gameDetectiveFragment"
@@ -48,14 +48,14 @@
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment android:id="@+id/gameDetectiveWonFragment"
-              android:name="com.example.myadventure.game_space.GameDetectiveWonFragment"
+              android:name="com.coffee.myadventure.game_space.GameDetectiveWonFragment"
               android:label="@string/won_fragment" tools:layout="@layout/game_detective_won_fragment">
         <argument android:name="gameId" app:argType="long"/>
         <action android:id="@+id/action_gameDetectiveWonFragment_to_menuFragment" app:destination="@id/menuFragment"
                 app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/tutorialSpaceFragment"
-              android:name="com.example.myadventure.game_space.TutorialSpaceFragment"
+              android:name="com.coffee.myadventure.game_space.TutorialSpaceFragment"
               android:label="@string/tutorial_fragment">
         <action android:id="@+id/action_tutorialSpaceFragment_to_gameSpaceFragment"
                 app:destination="@id/gameSpaceFragment" app:popUpTo="@+id/menuFragment"
@@ -63,23 +63,23 @@
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment android:id="@+id/reportLoginFragment"
-              android:name="com.example.myadventure.report_module.ReportLoginFragment"
+              android:name="com.coffee.myadventure.report_module.ReportLoginFragment"
               tools:layout="@layout/report_login_fragment" android:label="@string/report_login_fragment">
         <action android:id="@+id/action_reportLoginFragment_to_reportFragment" app:destination="@id/reportFragment"
                 app:popUpTo="@+id/menuFragment" app:enterAnim="@anim/slide_in_left"
                 app:exitAnim="@anim/slide_out_right" app:popEnterAnim="@anim/slide_in_right"
                 app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
-    <fragment android:id="@+id/reportFragment" android:name="com.example.myadventure.report_module.ReportFragment"
+    <fragment android:id="@+id/reportFragment" android:name="com.coffee.myadventure.report_module.ReportFragment"
               tools:layout="@layout/report_fragment" android:label="@string/report_fragment"/>
     <fragment android:id="@+id/tutorialDetectiveFragment"
-              android:name="com.example.myadventure.game_detective.TutorialDetectiveFragment"
+              android:name="com.coffee.myadventure.game_detective.TutorialDetectiveFragment"
               android:label="@string/tutorial_fragment">
         <action android:id="@+id/action_tutorialDetectiveFragment_to_gameDetectiveFragment"
                 app:destination="@id/gameDetectiveFragment" app:popUpTo="@+id/menuFragment"
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
-    <fragment android:id="@+id/aboutFragment" android:name="com.example.myadventure.about_screen.AboutFragment"
+    <fragment android:id="@+id/aboutFragment" android:name="com.coffee.myadventure.about_screen.AboutFragment"
               android:label="about_fragment" tools:layout="@layout/about_fragment"/>
 </navigation>

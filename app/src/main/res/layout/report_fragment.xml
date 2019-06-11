@@ -7,7 +7,7 @@
 
         <variable
                 name="reportViewModel"
-                type="com.example.myadventure.report_module.ReportViewModel" />
+                type="com.coffee.myadventure.report_module.ReportViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
