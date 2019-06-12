@@ -7,6 +7,7 @@ import com.coffee.myadventure.*
 import com.coffee.myadventure.database.GameDatabaseDao
 import com.coffee.myadventure.database.Game
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 class GameDetectiveViewModel(
         val database: GameDatabaseDao,
@@ -80,11 +81,15 @@ class GameDetectiveViewModel(
         }
 
         fun onPause() {
-            mediaPlayer.pause()
+            try {
+                mediaPlayer.pause()
+            } catch (ignore: Exception){}
         }
 
         fun onResume() {
-            mediaPlayer.start()
+            try {
+                mediaPlayer.start()
+            } catch (ignore:Exception){}
         }
 
         fun onEndGame() {
@@ -111,7 +116,9 @@ class GameDetectiveViewModel(
          */
         override fun onCleared() {
             super.onCleared()
-            mediaPlayer.stop()
+            try {
+                mediaPlayer.stop()
+            } catch (ignore:Exception){}
             viewModelJob.cancel()
         }
 }

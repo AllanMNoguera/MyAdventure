@@ -4,6 +4,7 @@ import android.app.Application
 import android.media.MediaPlayer
 import androidx.lifecycle.*
 import kotlinx.coroutines.Job
+import java.lang.Exception
 
 class TutorialSpaceViewModel (
     application: Application,
@@ -28,7 +29,9 @@ class TutorialSpaceViewModel (
     }
 
     init {
-        mediaPlayer.start()
+        try {
+            mediaPlayer.start()
+        } catch (ignore: Exception){}
         mediaPlayer.setOnCompletionListener { mp: MediaPlayer? ->
             _navigateToGame.value = 0
         }
@@ -55,7 +58,6 @@ class TutorialSpaceViewModel (
      */
     fun onFinishTutorial() {
         _navigateToGame.value = 0
-        mediaPlayer.stop()
     }
 
     /**
@@ -63,8 +65,10 @@ class TutorialSpaceViewModel (
      * Aqui se cancelan todas las corutinas.
      */
     override fun onCleared() {
-        mediaPlayer.stop()
         super.onCleared()
+        try {
+            mediaPlayer.stop()
+        } catch (ignore: Exception){}
         viewModelJob.cancel()
     }
 }

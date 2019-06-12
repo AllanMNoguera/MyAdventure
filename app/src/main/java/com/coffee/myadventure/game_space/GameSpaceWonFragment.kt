@@ -14,6 +14,7 @@ import com.coffee.myadventure.R
 import com.coffee.myadventure.database.GameDatabase
 import com.coffee.myadventure.databinding.GameSpaceWonFragmentBinding
 import kotlinx.coroutines.*
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 class GameSpaceWonFragment : Fragment() {
@@ -59,9 +60,11 @@ class GameSpaceWonFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             delay(TimeUnit.SECONDS.toMillis(5))
             withContext(Dispatchers.Main) {
-                view!!.findNavController().navigate(
-                    GameSpaceWonFragmentDirections.actionGameSpaceWonFragmentToMenuFragment()
-                )
+                try {
+                    view!!.findNavController().navigate(
+                        GameSpaceWonFragmentDirections.actionGameSpaceWonFragmentToMenuFragment()
+                    )
+                } catch (ignore:Exception){}
             }
         }
     }

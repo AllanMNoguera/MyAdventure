@@ -9,6 +9,7 @@ import com.coffee.myadventure.getSpaceAnswers
 import com.coffee.myadventure.getSpaceQuestion
 import com.coffee.myadventure.getSpaceScore
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 class GameSpaceViewModel(
         val database: GameDatabaseDao,
@@ -82,11 +83,15 @@ class GameSpaceViewModel(
         }
 
         fun onPause() {
-            mediaPlayer.pause()
+            try {
+                mediaPlayer.pause()
+            } catch (ignore:Exception){}
         }
 
         fun onResume() {
-            mediaPlayer.start()
+            try {
+                mediaPlayer.start()
+            } catch (ignore:Exception){}
         }
 
         fun onEndGame() {
@@ -113,7 +118,9 @@ class GameSpaceViewModel(
          */
         override fun onCleared() {
             super.onCleared()
-            mediaPlayer.stop()
+            try {
+                mediaPlayer.stop()
+            } catch (ignore:Exception){}
             viewModelJob.cancel()
         }
 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.lang.Exception
 
 class TutorialDetectiveViewModel (
     application: Application,
@@ -34,7 +35,9 @@ class TutorialDetectiveViewModel (
     }
 
     init {
-        mediaPlayer.start()
+        try {
+            mediaPlayer.start()
+        } catch (ignore: Exception){}
         mediaPlayer.setOnCompletionListener { mp: MediaPlayer? ->
             _navigateToGame.value = 0
         }
@@ -53,7 +56,6 @@ class TutorialDetectiveViewModel (
 
     fun onFinishTutorial() {
         _navigateToGame.value = 0
-        mediaPlayer.stop()
     }
 
     /**
@@ -63,8 +65,10 @@ class TutorialDetectiveViewModel (
      * using memory and resources.
      */
     override fun onCleared() {
-        mediaPlayer.stop()
         super.onCleared()
+        try {
+            mediaPlayer.stop()
+        } catch (ignore: Exception){}
         viewModelJob.cancel()
     }
 }
